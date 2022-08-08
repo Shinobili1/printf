@@ -22,5 +22,10 @@ int print_hex_upper(va_list);
 int print_hex_upper(va_list valist);
 int binary_oct_hex_convert(unsigned int, int, int);
 int print_unsig_int(va_list valist);
+typedef struct pt_fmt
+{
+	char *fmt;
+	int (*print)(va_list valist);
+} pt_fmt;
 
 #endif
