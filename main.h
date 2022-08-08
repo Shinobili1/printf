@@ -7,19 +7,6 @@
 #include <limits.h>
 #include <stdio.h>
 
-/**
- * struct pt_fmt - struct for print function
- * @fmt: index
- * @print: pointer for print function
- *
- * Description: stores pointers
- */
-typedef struct pt_fmt
-{
-char *fmt;
-int (*print)(va_list valist);
-} pt_fmt;
-
 
 int _printf(const char *format, ...);
 int _putchar(char c);
