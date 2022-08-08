@@ -1,32 +1,47 @@
 #include "main.h"
+#include <stdarg.h>
 
-/**
- * _printf - produces output according to a format
- * @format: a character string
- *
- * Return: the number of characters printed
- */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
-	pt_fmt pt_format[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"d", print_digit},
-		{"i", print_digit},
-		{"%", print_percent},
-		{"b", print_binary_conv},
-		{"u", print_unsig_int},
-		{"o", print_oct},
-		{"x", print_hex_low},
-		{"X", print_hex_upper},
-		{NULL, NULL}
-	};
+	va_list args;
+	int i = 0, k;
+	char *str;
 
-	va_list valist;
-	int num_ch = 0;
+	va_start(args, format);
 
-	va_start(valist, format);
-	num_ch = get_print(format, valist, pt_format);
-	va_end(valist);
-	return (num_ch);
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+			_putchar(format[i]);
+		else
+		{
+			if (format[i + 1] == 'c')
+			{
+				i++;
+				_putchar(va_arg(args, int));
+			}
+			else if (format[i + 1] == 's')
+			{
+				i++;
+				str = va_arg(args, char *);
+				k = 0;
+				while (str[k] != '\0')
+				{
+					_putchar(str[k]);
+					k++;
+				}
+			}
+			else if (format[i + 1] == '%')
+			{
+				i++;
+				_putchar('%');
+			}
+
+		}
+		i++;
+	}
+
+	va_end(args);
+
+	return (0);
 }
