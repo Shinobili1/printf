@@ -8,15 +8,15 @@
  */
 int print_string(va_list valist)
 {
-int i;
-char *ptr;
+	int i;
+	char *ptr;
 
-ptr = (va_arg(valist, char *));
-if (ptr == 0)
-ptr = "(null)";
-for (i = 0; ptr[i] != 0; i++)
-_putchar(ptr[i]);
-return (i);
+	ptr = (va_arg(valist, char *));
+	if (ptr == 0)
+		ptr = "(null)";
+	for (i = 0; ptr[i] != 0; i++)
+		_putchar(ptr[i]);
+	return (i);
 }
 
 /**
@@ -27,11 +27,11 @@ return (i);
  */
 int print_char(va_list valist)
 {
-char c;
+	char c;
 
-c = (va_arg(valist, int));
-_putchar(c);
-return (1);
+	c = (va_arg(valist, int));
+	_putchar(c);
+	return (1);
 }
 
 /**
@@ -42,6 +42,6 @@ return (1);
  */
 int print_percent(__attribute__((unused)) va_list valist)
 {
-_putchar ("%");
-return (1);
+	_putchar('%');
+	return (1);
 }
